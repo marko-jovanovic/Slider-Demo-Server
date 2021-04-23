@@ -6,7 +6,8 @@
   "scripts": {
     "start": "tsc && node dist/index.js",
     "dev": "nodemon --config nodemon.json src/index.ts",
-    "dev:debug": "nodemon --config nodemon.json --inspect-brk src/index.ts"
+    "dev:debug": "nodemon --config nodemon.json --inspect-brk src/index.ts",
+    "docker:build": "docker build -t slider-demo-server ."
   },
   "author": "",
   "license": "ISC",

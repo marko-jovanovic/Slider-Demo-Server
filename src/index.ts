@@ -1,22 +1,22 @@
-import express from 'express';
+import { ApolloServer } from 'apollo-server';
+import schema from './schema/index';
 import WriterService from './service/Writer';
 
-const port = 8080;
+const port = Number(process.env.PORT || 4000);
 
-const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const context = async ({ req }: {req: Request}) => {
+  return {
+    services: {
+      writerService: WriterService.getInstance()
+    }
+  }
+}
 
-app.get('/writers-team', async (req, res) => {
-  const service = WriterService.getInstance();
-  res.json(await service.findAll());
+const server = new ApolloServer({
+  schema,
+  context
 });
 
-app.post('/writers-team', async (req, res) => {
-  const service = WriterService.getInstance();
-  res.json(await service.create(req.body));
-});
-
-app.listen(port, () => {
-  console.log(`Server started at http://localhost:${port}`);
+server.listen({ port }).then(({ url }) => {
+  console.log(`\u{1F680}  server ready at http://localhost:${port}${server.graphqlPath}`);
 });

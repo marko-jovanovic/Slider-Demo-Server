@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  app:
+    image: slider-demo-app
+    network_mode: host
+  server:
+    image: slider-demo-server
+    command: >
+      sh -c "yarn generate &&
+             yarn migrate &&
+             yarn start"
+    network_mode: host
+    depends_on: 
+      - "mysql"
+  mysql:
+    image: mysql
+    network_mode: host
+    environment:
+      MYSQL_DATABASE: slider-demo
+      MYSQL_ROOT_PASSWORD: reallyStrongPassword

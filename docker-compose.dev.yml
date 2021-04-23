@@ -7,7 +7,7 @@ services:
     image: slider-demo-server
     command: >
       sh -c "yarn generate &&
-             yarn migrate &&
+             yarn migrate:dev &&
              yarn start"
     network_mode: host
     depends_on: 

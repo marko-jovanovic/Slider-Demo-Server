@@ -4,9 +4,9 @@ const Writer = objectType({
   name: 'Writer',
   definition(t) {
     t.nullable.int('id'),
-    t.string('name'),
-    t.string('about'),
-    t.string('imgUrl')
+    t.nonNull.string('name'),
+    t.nonNull.string('about'),
+    t.nonNull.string('imgUrl')
   }
 });
 

@@ -5,7 +5,7 @@ export const writerQueries = extendType({
   type: 'Query',
   definition(t) {
     t.field('getAllWriters', {
-      type: nonNull(list('Writer')),
+      type: nonNull(list(nonNull('Writer'))),
       async resolve(_, __, { services }: Context) {
         const { writerService } = services;
         return await writerService.findAll();

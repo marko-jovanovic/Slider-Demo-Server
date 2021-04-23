@@ -1,10 +1,20 @@
 import express from 'express';
+import WriterService from './service/Writer';
 
-const app = express();
 const port = 8080;
 
-app.get('/writers-team', (reg, res) => {
-  res.send([])
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.get('/writers-team', async (req, res) => {
+  const service = WriterService.getInstance();
+  res.json(await service.findAll());
+});
+
+app.post('/writers-team', async (req, res) => {
+  const service = WriterService.getInstance();
+  res.json(await service.create(req.body));
 });
 
 app.listen(port, () => {

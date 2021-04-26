@@ -34,3 +34,19 @@ Now you can boot up the whole app with `yarn compose:dev`
 
 ### Flaws of the current approach
 Since the docker volume is not being mounted, to make code changes you need to re-build the image and re-run the docker app. So, for now if you are only working od the **Slider Demo Server**, then stop the container with `docker stop slider-demo-server_server_1` and then run the app locally with command `yarn dev`.
+
+## Local start
+
+If you can't start your app from the container, then perform the following steps:
+
+### Step 1
+Make sure you have MySQL server running with database called `slider-demo`. After this make sure you've updated username and password in the connection string inside your `.env` file, otherwise the Prisma will fail to execute.
+
+### Step 2
+Run the command: `yarn generate`
+
+### Step 3
+Run the command: `yarn migrate:dev`
+
+### Step 4
+To run the app in production mode type the following command: `yarn start`, but if you want to run it in development mode then run: `yarn dev`

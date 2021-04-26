@@ -13,6 +13,7 @@ Dependencies:
 - [yup](https://github.com/jquense/yup) - JSON schema validator
 - [nexus](https://nexusjs.org/docs/getting-started/tutorial) - Define GraphQL schema through code
 - [nodemon](https://github.com/remy/nodemon) - watch for changes in order to restert the server automatically (dev purposes only)
+- [Prisma](https://www.prisma.io/) - ORM framework for Typescript
 
 ## Getting started
 
